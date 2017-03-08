@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name":    "Seismic Sensor Pull",
+    "version": "1.0",
+
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "matches": ["http://binary.etxcapital.com/*"],
+        "js":      ["jquery-1.7.2.min.js", "content.js"]
+    }],
+    "browser_action": {
+        "default_title": "Seismic Sensor Pull"
+    },
+    "permissions": ["activeTab"],
+    "icons": { "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png" }
+}
