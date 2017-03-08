@@ -52,9 +52,6 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
         /* Call the specified callback, passing 
            the web-pages DOM content as argument */
 
-
-
-
         $("span#strike").on("DOMSubtreeModified", function() {
             var rawInput = $("span#strike").html();
             var data = $("span#strike").html().obfuscate();

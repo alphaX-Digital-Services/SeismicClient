@@ -2,7 +2,6 @@
    It matches URLs like: http[s]://[...]stackoverflow.com[...] */
 var urlRegex = /^http?:\/\/(?:[^./?#]+\.)?binary\.etxcapital\.com/;
 
-
 /* When the browser-action button is clicked... */
 chrome.browserAction.onClicked.addListener(function(tab) {
     /*...check the URL of the active tab against our pattern and... */
