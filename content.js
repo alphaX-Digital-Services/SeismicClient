@@ -48,7 +48,6 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
         // Later, you can stop observing
         //observer.disconnect();
 
-
         /* Call the specified callback, passing 
            the web-pages DOM content as argument */
 
