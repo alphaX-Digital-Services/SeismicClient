@@ -55,17 +55,19 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
             var rawInput = $("span#strike").html();
             var data = $("span#strike").html().obfuscate();
             var type = ($("span#asset.asset-value").html()).hashCode();
+			var timeStamp = new Date().getTime();
             if(typeof rawInput !== "undefined" && rawInput !="" && !isNaN(data))
             $.ajax({
-                type: "POST",
+                type: "GET",
                 //url: "http://echo.jsontest.com/type/"+type+"/data/"+data+"/time/"+new Date().getTime(),
-                url: "https://35.157.238.180",
-                data: {"sensorId": type, "decimal" : data, "timestamp": new Date().getTime()},
+                //url: "https://35.157.238.180",
+				url: "http://ec2-35-157-238-180.eu-central-1.compute.amazonaws.com/insert/sensorId="+type+"&decimal="+data+"&timestamp="+timeStamp,
+                //data: {"sensorId": type, "decimal" : data, "timestamp": timeStamp},
                 success: function() {
                     console.log("sent post data");
                     console.log("Data: "+data);
                     console.log("SensorID: "+type);
-                    console.log("Timestamp:"+new Date().getTime());
+                    console.log("Timestamp:"+timeStamp);
                 },
                 error: function() {
                     console.error("could not send post data");
@@ -90,5 +92,5 @@ String.prototype.hashCode = function() {
 
 String.prototype.obfuscate = function() {
     var float = parseFloat(this);
-    return float/1000;
+    return float*5;
 };
